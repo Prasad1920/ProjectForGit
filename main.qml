@@ -10,9 +10,10 @@ ApplicationWindow {
     title: qsTr("Write Here")
 
     Canvas{
+        id:canvas
         property int lastX: 0
         property int lastY: 0
-
+    anchors.fill: parent
         function clear(){
             var ctx = getContext("2d")
             ctx.reset()
@@ -44,7 +45,20 @@ ApplicationWindow {
             ctx.stroke()
 
         }
+        RowLayout{
+            id:button
+            anchors.horizontalCenter: parent.horizontalCenter
+           Button{
+               text: 'clear'
+               onClicked: canvas.clear();
 
+           }
+           Button{
+               text: 'Exit'
+               onClicked: Qt.quit();
+
+           }
+        }
 
 
   }
